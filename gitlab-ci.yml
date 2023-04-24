@@ -1,0 +1,16 @@
+image: python:3.11
+
+before_script:
+  - python --version
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - export PYTHONPATH="$PYTHONPATH:./src"
+  - pip install -r requirements.txt
+
+test:
+  script:
+    - export PYTHONPATH="$PYTHONPATH:./src"
+    - pytest ./tests/*_test.py
+    - flake8 .
+    - mypy .
