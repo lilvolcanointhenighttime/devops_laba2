@@ -1,12 +1,11 @@
 from fastapi import FastAPI
 
 app = FastAPI(
-    title="Formatting App"
-)
+    title="Formatting App")
 
 
 @app.get("/formatted-text")
-def space_formatting(text: str = "Hello   ,   world  ."):
+def space_formatting(text: str = "Hello world."):
     temp_text = list(text)
     for i in range(len(temp_text) - 1):
         if temp_text[i] == temp_text[i + 1]:
